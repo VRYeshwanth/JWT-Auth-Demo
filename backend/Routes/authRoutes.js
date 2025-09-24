@@ -6,7 +6,18 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-    res.send("REGISTER route working");
+    const {email, password} = req.body;
+
+    try {
+        const hashedPwd = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS));
+
+        const response = await pool.query("INSERT INTO jwt_demo (email, password) VALUES ($1, $2) RETURNING *", [email, hashedPwd]);
+
+        res.send(response.rows[0]);
+    }
+    catch(e) {
+        res.send({Error: "Error registering"});
+    }
 })
 
 router.post("/login", async (req, res) => {
