@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import authRoutes from "./Routes/authRoutes.js";
+import protectedRoutes from "./Routes/protectedRoutes.js"
 
 dotenv.config();
 const app = express();
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/auth", authRoutes);
+app.use("/api", protectedRoutes);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`)
