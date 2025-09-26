@@ -2,7 +2,7 @@
 
 This is a backend-only application that implements authentication using JSON Web Tokens (JWT). It provides API endpoints for user registration, login, and accessing protected routes
 
-## ⚡ Features
+## Features
 
 - User registration and login via API endpoints
 - JWT token generation and verification
@@ -49,4 +49,4 @@ npm run dev
 
 - Register a user using `/auth/register` endpoint
 - Login via `/auth/login` endpoint to get a JWT token
--Access protected endpoints by including the JWT in the `Authorization` header as `Bearer <token>`
+- Access protected endpoints by including the JWT in the `Authorization` header as `Bearer <token>`
